@@ -1,6 +1,6 @@
 # black lives zombia afker 24/7
 
-this is basically just a fancy word for a single filler that's sent to a base that stays in the base 24/7 to afk for you.
+this is basically just a fancy word for a single alt that's sent to a base that stays in the base 24/7 to afk for you.
 just run this code on a vps that stays 24/7 and send the filler to your base and do not close the script and it will automatically afk for you (assuming it doesn't disconnect)
 
 ## how to use script
