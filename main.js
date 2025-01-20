@@ -12,10 +12,10 @@ const servers = {
 let autoReconnect = true; // change to false if you don't want auto reconnect to be enabled by default.
 
 class Afker {
-    constructor(wsUrl, psk) {
+    constructor(wsUrl, psk, username) {
         this.wsUrl = wsUrl;
         this.psk = psk;
-        this.username = "Player"; // black livefs matter, change this to another username if you want to use another username for the alt
+        this.username = username; // black livefs matter, change this to another username if you want to use another username for the alt
         this.sock = null;
         this.network = new network.Network();
         this.connect();
@@ -51,7 +51,12 @@ class Afker {
 const sendAlt = (serverId, psk) => {
     try {
         let wsUrl = servers[serverId];
-        new Afker(wsUrl, psk);
+        if (process.argv[4]) {
+            let username = process.argv[4];
+        } else {
+            let username = "Player"
+        }
+        new Afker(wsUrl, psk, username);
     } catch (err) {
         console.log("couldn't find the right websocket url. maybe you made a typo in the server id. Please enter a server id as the first argument, example: v01001");
         console.error("\n\nError: ", err);
@@ -62,7 +67,7 @@ const sendAlt = (serverId, psk) => {
 const main = () => {
     if (process.argv.length < 4) {
         console.log("Usage:\n\
-            node main.js {serverid(example: v01001)} {party sharekey (psk)}");
+            node main.js {serverid(example: v01001)} {party sharekey (psk)} {username (optional)}");
         return;
     };
 
